@@ -34,10 +34,12 @@ module TheSortableTreeController
     include DefineVariablesMethod
     public
     def rebuild
-      id        = params[:id].to_i
-      parent_id = params[:parent_id].to_i
-      prev_id   = params[:prev_id].to_i
-      next_id   = params[:next_id].to_i
+
+      # Rails should be able to handle coercing these to the proper type
+      id        = params[:id]        # .to_i
+      parent_id = params[:parent_id] # .to_i
+      prev_id   = params[:prev_id]   # .to_i
+      next_id   = params[:next_id]   # .to_i
 
       return render(nothing: true, status: :no_content) if parent_id.zero? && prev_id.zero? && next_id.zero?
 
